@@ -1,0 +1,488 @@
+/* Variables de Color */
+:root {
+    --color-primary: #0A0E27;
+    --color-secondary: #1a1f3a;
+    --color-accent: #8bf706;
+    --color-text: #E0E0E0;
+    --color-border: #2a2f4e;
+    --color-white: #FFFFFF;
+}
+
+/* Reset y estilos globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+    background-color: var(--color-secondary);
+    border-bottom: 3px solid var(--color-accent);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: fit-content;
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.logo-text h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-white);
+}
+
+.logo-highlight {
+    color: var(--color-accent);
+}
+
+.tagline {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Navegación */
+.nav {
+    flex: 1;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
+/* Botones Base */
+.btn-cta,
+.btn-hero,
+.btn-setup-page {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-cta {
+    padding: 0.75rem 1.8rem;
+    font-size: 0.95rem;
+}
+
+.btn-cta:hover,
+.btn-hero:hover,
+.btn-setup-page:hover {
+    background-color: #a9ff1a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(139, 247, 6, 0.4);
+}
+
+.btn-cta:active {
+    transform: translateY(0);
+}
+
+.btn-hero {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+}
+
+.btn-hero:hover {
+    transform: scale(1.05);
+}
+
+.btn-setup-page {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    align-self: flex-start;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    position: relative;
+    padding: 100px 0;
+    margin-top: 70px;
+    text-align: center;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 14, 39, 0.6);
+    z-index: 2;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-content {
+    color: var(--color-white);
+    position: relative;
+    z-index: 3;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+/* ==================== SETUP GT3 SECTION ==================== */
+.setup-section {
+    padding: 80px 0;
+    background-color: var(--color-primary);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--color-white);
+    font-weight: 700;
+}
+
+.section-title .accent {
+    color: var(--color-accent);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.setup-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.setup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.recommendations h3,
+.adjustable-params h3 {
+    font-size: 1.5rem;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.recommendation-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Tarjetas Base */
+.rec-card,
+.param-item {
+    background-color: var(--color-secondary);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--color-accent);
+}
+
+.rec-card:hover,
+.param-item:hover {
+    background-color: rgba(139, 247, 6, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(139, 247, 6, 0.2);
+}
+
+.card-icon,
+.param-icon {
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.card-icon {
+    font-size: 2rem;
+}
+
+.param-icon {
+    font-size: 2.5rem;
+}
+
+.rec-card h4,
+.param-item h4 {
+    color: var(--color-accent);
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.rec-card p,
+.param-item p {
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.params-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    margin-top: 80px;
+    background-color: var(--color-secondary);
+    border-top: 2px solid var(--color-accent);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 2rem;
+    padding: 3rem 20px;
+}
+
+.footer h3,
+.footer h4 {
+    color: var(--color-white);
+    margin-bottom: 1rem;
+}
+
+.footer-brand p,
+.footer-contact li,
+.footer-links li {
+    color: var(--color-text);
+}
+
+.footer-contact ul,
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-contact li,
+.footer-links li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-accent);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--color-border);
+    padding: 1rem 20px;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: var(--color-text);
+    font-size: 0.9rem;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .nav ul {
+        gap: 1rem;
+        font-size: 0.85rem;
+    }
+
+    .nav a {
+        padding: 0.5rem 0;
+    }
+
+    .logo-text h1 {
+        font-size: 1.4rem;
+    }
+
+    .btn-cta {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .hero {
+        padding: 120px 0 80px 0;
+        margin-top: 80px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .setup-container {
+        gap: 2rem;
+    }
+
+    .recommendation-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .params-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 2rem 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .logo-icon {
+        font-size: 2rem;
+    }
+
+    .logo-text h1 {
+        font-size: 1.2rem;
+    }
+
+    .tagline {
+        font-size: 0.7rem;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .btn-hero {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .params-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        margin-top: 60px;
+    }
+}
