@@ -1,3 +1,7 @@
+El proyecto que se quiso hacer, es una pagina o primer boceto de lo que seria una aplicacion para equipos o personas que buscan el siguiente nivel en simracing o competencias virtuales, ya sea iRacing, assetto corsa competizione o Le Mans Ultimate. Brindando la opcion para mejorar o ajustar el reglaje de cada auto para el circuito que se requiera, dando descripciones de cada cambio, ya sea aeordinamico o de suspensiones, pudiendo asi dar una guia tanto para novatos como para expertoss.
+
+se hicieron dos carpetas la de CSS donde esta estilos.css, img para archivos ya sean imagenes o videos y finalmente el archivo index.html donde esta el codigo htm de la landing page
+
 1er "prompt haz un header para una landing page
 , esta pagina va a ser para una aplicacion web, que se basará en recomendacion y configuracion de reglajes para simracing"
 
