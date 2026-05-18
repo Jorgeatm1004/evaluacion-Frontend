@@ -141,13 +141,39 @@
             </div>
 
             <div class="footer-contact">
-                <h4>Contacto</h4>
-                <ul>
-                    <li>Email: contacto@simracingpro.com</li>
-                    <li>WhatsApp: +569 5324 5678</li>
-                    <li>Instagram: @simracingpro</li>
-                    <li>Discord: simracingpro</li>
-                </ul>
+                <h4>Formulario de Contacto</h4>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="fullName">Nombre Completo:</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Juan Pérez" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Dirección:</label>
+                        <input type="text" id="address" name="address" placeholder="Calle 123, Apartamento 4B" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">País:</label>
+                        <select id="country" name="country" required>
+                            <option value="">Selecciona tu país...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comments">Comentarios:</label>
+                        <textarea id="comments" name="comments" placeholder="Escribe tus comentarios aquí..." rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar</button>
+                </form>
             </div>
 
             <div class="footer-links">
@@ -165,5 +191,7 @@
             <p>© 2026 SimRacingPro. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
