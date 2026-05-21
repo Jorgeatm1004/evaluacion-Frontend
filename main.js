@@ -674,8 +674,34 @@ document.addEventListener('DOMContentLoaded', function() {
   // Agregar validaciones en tiempo real
   const nameInput = document.getElementById('fullName');
   const emailInput = document.getElementById('email');
+  const addressInput = document.getElementById('address');
+  const countryInput = document.getElementById('country');
+  const commentsInput = document.getElementById('comments');
   const nameError = document.getElementById('nameError');
   const emailError = document.getElementById('emailError');
+  const formFeedback = document.getElementById('formFeedback');
+
+  function setFieldState(field, isValid) {
+    field.classList.toggle('invalid', !isValid);
+  }
+
+  function setFeedback(message, type) {
+    formFeedback.textContent = message;
+    formFeedback.classList.remove('success', 'error');
+
+    if (type) {
+      formFeedback.classList.add(type);
+    }
+  }
+
+  function validateRequiredField(field, message) {
+    const valid = field.value.trim().length > 0;
+    setFieldState(field, valid);
+    return {
+      valid,
+      message: valid ? '' : message
+    };
+  }
   
   // Validación de nombre en tiempo real
   nameInput.addEventListener('blur', function() {
@@ -683,18 +709,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!validation.valid) {
       nameError.textContent = validation.message;
       nameError.style.display = 'block';
-      this.classList.add('invalid');
+      setFieldState(this, false);
     } else {
       nameError.textContent = '';
       nameError.style.display = 'none';
-      this.classList.remove('invalid');
+      setFieldState(this, true);
     }
   });
   
   nameInput.addEventListener('input', function() {
     nameError.textContent = '';
     nameError.style.display = 'none';
-    this.classList.remove('invalid');
+    setFieldState(this, true);
+    setFeedback('', null);
   });
   
   // Validación de email en tiempo real
@@ -703,18 +730,33 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!validation.valid) {
       emailError.textContent = validation.message;
       emailError.style.display = 'block';
-      this.classList.add('invalid');
+      setFieldState(this, false);
     } else {
       emailError.textContent = '';
       emailError.style.display = 'none';
-      this.classList.remove('invalid');
+      setFieldState(this, true);
     }
   });
   
   emailInput.addEventListener('input', function() {
     emailError.textContent = '';
     emailError.style.display = 'none';
-    this.classList.remove('invalid');
+    setFieldState(this, true);
+    setFeedback('', null);
+  });
+
+  addressInput.addEventListener('input', function() {
+    setFieldState(this, true);
+    setFeedback('', null);
+  });
+
+  countryInput.addEventListener('change', function() {
+    setFieldState(this, true);
+    setFeedback('', null);
+  });
+
+  commentsInput.addEventListener('input', function() {
+    setFeedback('', null);
   });
   
   // Validación completa al enviar
@@ -722,18 +764,20 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     
     let isValid = true;
+    const errorMessages = [];
     
     // Validar nombre
     const nameValidation = validateName(nameInput.value);
     if (!nameValidation.valid) {
       nameError.textContent = nameValidation.message;
       nameError.style.display = 'block';
-      nameInput.classList.add('invalid');
+      setFieldState(nameInput, false);
       isValid = false;
+      errorMessages.push(nameValidation.message);
     } else {
       nameError.textContent = '';
       nameError.style.display = 'none';
-      nameInput.classList.remove('invalid');
+      setFieldState(nameInput, true);
     }
     
     // Validar email
@@ -741,34 +785,45 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!emailValidation.valid) {
       emailError.textContent = emailValidation.message;
       emailError.style.display = 'block';
-      emailInput.classList.add('invalid');
+      setFieldState(emailInput, false);
       isValid = false;
+      errorMessages.push(emailValidation.message);
     } else {
       emailError.textContent = '';
       emailError.style.display = 'none';
-      emailInput.classList.remove('invalid');
+      setFieldState(emailInput, true);
     }
     
     // Validar que otros campos no estén vacíos
-    const address = document.getElementById('address').value.trim();
-    const country = document.getElementById('country').value.trim();
-    
-    if (!address) {
-      alert('Por favor, ingresa una dirección');
+    const addressValidation = validateRequiredField(addressInput, 'La dirección no puede estar vacía');
+    if (!addressValidation.valid) {
       isValid = false;
+      errorMessages.push(addressValidation.message);
     }
     
-    if (!country) {
-      alert('Por favor, selecciona un país');
+    const countryValidation = validateRequiredField(countryInput, 'Por favor, selecciona un país');
+    if (!countryValidation.valid) {
       isValid = false;
+      errorMessages.push(countryValidation.message);
     }
     
     // Si todo es válido, mostrar mensaje de éxito
     if (isValid) {
-      alert('¡Formulario enviado correctamente!\n\nNombre: ' + nameInput.value + '\nEmail: ' + emailInput.value + '\nDirección: ' + address + '\nPaís: ' + country);
+      const fullName = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const address = addressInput.value.trim();
+      const country = countryInput.value.trim();
+
+      setFeedback('Formulario enviado correctamente. ' + fullName + ' ya quedó registrado.', 'success');
       form.reset();
       nameError.style.display = 'none';
       emailError.style.display = 'none';
+      setFieldState(nameInput, true);
+      setFieldState(emailInput, true);
+      setFieldState(addressInput, true);
+      setFieldState(countryInput, true);
+    } else {
+      setFeedback(errorMessages[0] || 'Revisa los campos marcados en rojo.', 'error');
     }
   });
 });

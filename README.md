@@ -18,3 +18,9 @@ se encontraba el video "el archvio esta en la carpeta img,se llama AudiVSporsche
 7to se arregla con otra instruccion lo que se hizo anteriormente y tambien se quita la imagen antes pedida "los parametro tienen que ir con una descripcion, los ajustes se haran en otra pagina" y "quita la imagen, distribuye el contenido por la pagina de mejor manera"
 
 se termina con el footer de la pagina "terminemos con el footer, donde tiene que ir la informacion de contacto"
+
+se uso un prompt para la creacion del formulario, donde hay validaciones if para el correo y nombres, ademas de que no se acepta dejar espacios en blanco. El prompt a usar es "necesito que hagas un formulario, donde se pida: nombre completo, email, direccion, pais y la seccion de comentarios, en pais, debe ser una lista de paises donde el usuario selecciona su pais de residencia, en el archivo de main.j debe estar la seleccion de paises, ademas de la validacion de email, validacion de nombre permitiendo acentos y puntuacion, pero no numeros ni caracteres especiales. Este formulario debe estar ubicado en el footer del html"
+
+se aplico cambio en el main.js cuando se completa correctamente el formulario de la pagina.
+
+se cambio el color de la letra de la lista de paises para que sea mas legible la lectura.
